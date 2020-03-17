@@ -44,6 +44,9 @@ namespace DesafioEnquete.Application.Service
         public OptionDTO GetById(int id)
         {
             var objOption = _serviceOption.GetById(id);
+            if (objOption is null)
+                return null;
+
             return _mapperOption.MapperToDTO(objOption);
         }
 

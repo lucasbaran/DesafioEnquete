@@ -59,6 +59,9 @@ namespace DesafioEnquete.Application.Service
         public GetQuestionViewModel GetById(int id)
         {
             var objQuestion = _serviceQuestion.GetById(id);
+            if (objQuestion is null)
+                return null;
+
             var questionViewModel = _mapperQuestion.MapperToGetViewModel(objQuestion);
 
             questionViewModel.options = _applicationServiceOption
@@ -73,6 +76,13 @@ namespace DesafioEnquete.Application.Service
         {
             var objQuestion = _mapperQuestion.MapperToEntity(obj);
             _serviceQuestion.Remove(objQuestion);
+        }
+
+        public void SumView(int id)
+        {
+            var objQuestion = _serviceQuestion.GetById(id);
+            objQuestion.Views = objQuestion.Views++;
+            _serviceQuestion.Update(objQuestion);
         }
 
         public void Update(QuestionDTO obj)

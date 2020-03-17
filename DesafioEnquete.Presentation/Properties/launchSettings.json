@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WebApiDDD.Presentation": {
+    "DesafioEnquete.Presentation": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

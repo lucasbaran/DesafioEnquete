@@ -5,7 +5,7 @@ using DesafioEnquete.Application.DTO.ViewModels;
 using DesafioEnquete.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApiDDD.Presentation.Controllers
+namespace DesafioEnquete.Presentation.Controllers
 {
     [Route("poll")]
     [ApiController]
@@ -24,9 +24,15 @@ namespace WebApiDDD.Presentation.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            if (_applicationServiceQuestion.GetAll().Where(x => x.Id.Equals(id)).Any())
-                return Ok(_applicationServiceQuestion.GetById(id));
-            return NotFound();
+            var dto =_applicationServiceQuestion.GetById(id);
+
+            if (dto is null)
+                return NotFound("Questão não encontrada");
+
+            _applicationServiceQuestion.SumView(id);
+
+            return Ok(_applicationServiceQuestion.GetById(id));
+            
         }
 
         [HttpPost("poll")]

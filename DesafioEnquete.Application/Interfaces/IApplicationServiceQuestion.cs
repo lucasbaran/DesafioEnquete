@@ -19,6 +19,8 @@ namespace DesafioEnquete.Application.Interfaces
 
         void Remove(QuestionDTO obj);
 
+        void SumView(int id);
+
         void Dispose();
 
     }
