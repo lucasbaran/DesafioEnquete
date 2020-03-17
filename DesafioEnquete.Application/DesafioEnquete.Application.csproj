@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DesafioEnquete.Application.DTO\DesafioEnquete.Application.DTO.csproj" />
+    <ProjectReference Include="..\DesafioEnquete.Domain.Core\DesafioEnquete.Domain.Core.csproj" />
+    <ProjectReference Include="..\DesafioEnquete.Infrastruture.CrossCutting.Adapter\DesafioEnquete.Infrastruture.CrossCutting.Adapter.csproj" />
+  </ItemGroup>
+
+</Project>

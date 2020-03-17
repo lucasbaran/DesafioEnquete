@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DesafioEnquete.Application\DesafioEnquete.Application.csproj" />
+    <ProjectReference Include="..\DesafioEnquete.Domain.Services\DesafioEnquete.Domain.Services.csproj" />
+    <ProjectReference Include="..\DesafioEnquete.Infrastruture.Repository\DesafioEnquete.Infrastruture.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

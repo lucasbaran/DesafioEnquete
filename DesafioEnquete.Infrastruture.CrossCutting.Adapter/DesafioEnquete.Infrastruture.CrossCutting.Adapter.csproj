@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DesafioEnquete.Application.DTO\DesafioEnquete.Application.DTO.csproj" />
+    <ProjectReference Include="..\DesafioEnquete.Domain\DesafioEnquete.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
