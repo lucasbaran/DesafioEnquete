@@ -5,13 +5,15 @@ namespace DesafioEnquete.Application.Interfaces
 {
     public interface IApplicationServiceQuestion
     {
-        void Add(AddQuestionViewModel obj);
+        void Add(PostQuestionViewModel obj);
 
-        int AddWithReturn(AddQuestionViewModel obj);
+        int AddWithReturn(PostQuestionViewModel obj);
 
         void Add(QuestionDTO obj);
 
         GetQuestionViewModel GetById(int id);
+
+        StatsQuestionViewModel StatsQuestion(int id);
 
         IEnumerable<QuestionDTO> GetAll();
 

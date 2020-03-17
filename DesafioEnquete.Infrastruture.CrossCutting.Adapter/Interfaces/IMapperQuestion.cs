@@ -9,13 +9,15 @@ namespace DesafioEnquete.Infrastruture.CrossCutting.Adapter.Interfaces
         #region Interfaces Mappers
         Question MapperToEntity(QuestionDTO questionDTO);
 
-        Question MapperToEntity(AddQuestionViewModel questionViewModel);
+        Question MapperToEntity(PostQuestionViewModel questionViewModel);
 
         IEnumerable<QuestionDTO> MapperListQuestions(IEnumerable<Question> questions);
 
         QuestionDTO MapperToDTO(Question question);
 
         GetQuestionViewModel MapperToGetViewModel(Question question);
+
+        StatsQuestionViewModel MapperToStatsViewModel(Question question);
 
         #endregion
 

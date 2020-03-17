@@ -24,22 +24,21 @@ namespace DesafioEnquete.Presentation.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            var dto =_applicationServiceQuestion.GetById(id);
+            var getQuestionViewModel =_applicationServiceQuestion.GetById(id);
 
-            if (dto is null)
+            if (getQuestionViewModel is null)
                 return NotFound("Questão não encontrada");
 
             _applicationServiceQuestion.SumView(id);
 
-            var questionViewModel = _applicationServiceQuestion.GetById(id);
-            questionViewModel.options = _applicationServiceOption.GetAllOptionsQuestion(id);
+            getQuestionViewModel.options = _applicationServiceOption.GetAllOptionsQuestion(id);
 
-            return Ok(questionViewModel);
+            return Ok(getQuestionViewModel);
             
         }
 
         [HttpPost("poll")]
-        public ActionResult Post([FromBody] AddQuestionViewModel questionViewModel)
+        public ActionResult Post([FromBody] PostQuestionViewModel questionViewModel)
         {
             try
             {
@@ -85,12 +84,12 @@ namespace DesafioEnquete.Presentation.Controllers
         {
             try
             {
-                var question = _applicationServiceQuestion.GetById(id);
+                var statsViewModel = _applicationServiceQuestion.StatsQuestion(id);
 
-                if (question is null)
+                if (statsViewModel is null)
                     return NotFound("Questão não cadastrada.");
 
-                return Ok(question);
+                return Ok(statsViewModel);
             }
             catch (Exception)
             {

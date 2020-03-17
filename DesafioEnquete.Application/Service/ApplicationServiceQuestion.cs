@@ -23,7 +23,7 @@ namespace DesafioEnquete.Application.Service
             _mapperQuestion = MapperQuestion;
         }
 
-        public void Add(AddQuestionViewModel obj)
+        public void Add(PostQuestionViewModel obj)
         {
             var objQuestion = _mapperQuestion.MapperToEntity(obj);
             _serviceQuestion.Add(objQuestion);
@@ -35,7 +35,7 @@ namespace DesafioEnquete.Application.Service
             _serviceQuestion.Add(objQuestion);
         }
 
-        public int AddWithReturn(AddQuestionViewModel obj)
+        public int AddWithReturn(PostQuestionViewModel obj)
         {
             var objQuestion = _mapperQuestion.MapperToEntity(obj);
             _serviceQuestion.Add(objQuestion);
@@ -62,16 +62,16 @@ namespace DesafioEnquete.Application.Service
             if (objQuestion is null)
                 return null;
 
-            var questionViewModel = _mapperQuestion.MapperToGetViewModel(objQuestion);
+            return _mapperQuestion.MapperToGetViewModel(objQuestion);
+        }
 
-            var options = _applicationServiceOption.GetAll().Where(x => x.QuestionId == id).ToList();
+        public StatsQuestionViewModel StatsQuestion(int id)
+        {
+            var objQuestion = _serviceQuestion.GetById(id);
+            if (objQuestion is null)
+                return null;
 
-            //questionViewModel.options = _applicationServiceOption
-            //    .GetAll()
-            //    .Where(x => x.QuestionId.Equals(id))
-            //    .Select(x => new GetOptionViewModel { option_id = x.Id.GetValueOrDefault(), option_description = x.Description });
-
-            return questionViewModel;
+            return _mapperQuestion.MapperToStatsViewModel(objQuestion);
         }
 
         public void Remove(QuestionDTO obj)

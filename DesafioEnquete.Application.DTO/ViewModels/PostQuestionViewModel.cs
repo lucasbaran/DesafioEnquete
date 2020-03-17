@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace DesafioEnquete.Application.DTO.ViewModels
 {
-    public class AddQuestionViewModel : Notifiable, IValidatable
+    public class PostQuestionViewModel : Notifiable, IValidatable
     {
         public string poll_description { get; set; }
 

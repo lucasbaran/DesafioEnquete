@@ -17,7 +17,7 @@ namespace DesafioEnquete.Infrastruture.CrossCutting.Adapter.Map
 
         #region methods
 
-        public Question MapperToEntity(AddQuestionViewModel questionViewModel)
+        public Question MapperToEntity(PostQuestionViewModel questionViewModel)
         {
             var question = new Question
             {
@@ -87,6 +87,16 @@ namespace DesafioEnquete.Infrastruture.CrossCutting.Adapter.Map
                 poll_id = question.Id.GetValueOrDefault()
                 ,
                 poll_description = question.Description
+            };
+
+            return getQuestionViewModel;
+        }
+
+        public StatsQuestionViewModel MapperToStatsViewModel(Question question)
+        {
+            var getQuestionViewModel = new StatsQuestionViewModel
+            {
+                views = question.Views
             };
 
             return getQuestionViewModel;
