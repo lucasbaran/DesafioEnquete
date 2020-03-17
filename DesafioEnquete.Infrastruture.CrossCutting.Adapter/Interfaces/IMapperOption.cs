@@ -12,6 +12,8 @@ namespace DesafioEnquete.Infrastruture.CrossCutting.Adapter.Interfaces
 
         IEnumerable<OptionDTO> MapperListOptions(IEnumerable<Option> options);
 
+        IEnumerable<GetOptionViewModel> MapperListGetOptionsViewModel(IEnumerable<Option> options);
+
         OptionDTO MapperToDTO(Option Op);
 
         #endregion

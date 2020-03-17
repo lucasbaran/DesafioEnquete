@@ -31,7 +31,10 @@ namespace DesafioEnquete.Presentation.Controllers
 
             _applicationServiceQuestion.SumView(id);
 
-            return Ok(_applicationServiceQuestion.GetById(id));
+            var questionViewModel = _applicationServiceQuestion.GetById(id);
+            questionViewModel.options = _applicationServiceOption.GetAllOptionsQuestion(id);
+
+            return Ok(questionViewModel);
             
         }
 
@@ -57,8 +60,8 @@ namespace DesafioEnquete.Presentation.Controllers
             }
         }
 
-        [HttpPut("poll/{id}/vote")]
-        public ActionResult Put([FromBody] int id)
+        [HttpGet("poll/{id}/vote")]
+        public ActionResult Put(int id)
         {
             try
             {
@@ -77,8 +80,8 @@ namespace DesafioEnquete.Presentation.Controllers
             }
         }
 
-        [HttpPut("poll/{id}/stats")]
-        public ActionResult Stats([FromBody] int id)
+        [HttpGet("{id}/stats")]
+        public ActionResult Stats(int id)
         {
             try
             {

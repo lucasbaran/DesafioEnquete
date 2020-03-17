@@ -3,6 +3,7 @@ using DesafioEnquete.Application.Interfaces;
 using DesafioEnquete.Domain.Core.Interfaces.Services;
 using DesafioEnquete.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DesafioEnquete.Application.Service
 {
@@ -10,7 +11,7 @@ namespace DesafioEnquete.Application.Service
     {
         private readonly IServiceOption _serviceOption;
         private readonly IMapperOption _mapperOption;
-     
+
         public ApplicationServiceOption(IServiceOption ServiceOption, IMapperOption MapperOption)
         {
             _serviceOption = ServiceOption;
@@ -39,6 +40,12 @@ namespace DesafioEnquete.Application.Service
         {
             var objOptions = _serviceOption.GetAll();
             return _mapperOption.MapperListOptions(objOptions);
+        }
+
+        public IEnumerable<GetOptionViewModel> GetAllOptionsQuestion(int questionId)
+        {
+            var objOptions = _serviceOption.GetAll().Where(x => x.QuestionId.Equals(questionId));
+            return _mapperOption.MapperListGetOptionsViewModel(objOptions);
         }
 
         public OptionDTO GetById(int id)

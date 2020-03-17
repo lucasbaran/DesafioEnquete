@@ -13,6 +13,8 @@ namespace DesafioEnquete.Application.Interfaces
 
         IEnumerable<OptionDTO> GetAll();
 
+        IEnumerable<GetOptionViewModel> GetAllOptionsQuestion(int questionId);
+
         void Update(OptionDTO obj);
 
         void Remove(OptionDTO obj);

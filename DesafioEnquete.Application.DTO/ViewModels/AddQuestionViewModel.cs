@@ -17,7 +17,7 @@ namespace DesafioEnquete.Application.DTO.ViewModels
                 new Contract()
                     .HasMaxLen(poll_description, 120, "poll_description", "A pergunta deve conter até 120 caracteres")
                     .HasMinLen(poll_description, 3, "poll_description", "A pergunta deve conter pelo menos 3 caracteres")
-                    .AreNotEquals(options.Count(), 3, "options", "A pergunta deve conter 3 opções")
+                    .AreEquals(options.Count(), 3, "options", "A pergunta deve conter 3 opções")
             );
             foreach (var option in options)
             {

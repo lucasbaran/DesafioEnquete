@@ -11,6 +11,7 @@ namespace DesafioEnquete.Infrastruture.CrossCutting.Adapter.Map
         #region properties
 
         List<OptionDTO> optionDTOs = new List<OptionDTO>();
+        List<GetOptionViewModel> optionViewModels = new List<GetOptionViewModel>();
 
         #endregion
 
@@ -73,6 +74,24 @@ namespace DesafioEnquete.Infrastruture.CrossCutting.Adapter.Map
 
             return optionDTO;
 
+        }
+
+        public IEnumerable<GetOptionViewModel> MapperListGetOptionsViewModel(IEnumerable<Option> options)
+        {
+            foreach (var item in options)
+            {
+                var optionDTO = new GetOptionViewModel
+                {
+                    option_id = item.Id.GetValueOrDefault()
+                    ,
+                    option_description = item.Description
+                };
+
+                optionViewModels.Add(optionDTO);
+
+            }
+
+            return optionViewModels;
         }
 
         #endregion

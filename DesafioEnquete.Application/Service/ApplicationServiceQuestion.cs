@@ -64,10 +64,12 @@ namespace DesafioEnquete.Application.Service
 
             var questionViewModel = _mapperQuestion.MapperToGetViewModel(objQuestion);
 
-            questionViewModel.options = _applicationServiceOption
-                .GetAll()
-                .Where(x => x.QuestionId == id)
-                .Select(x => new GetOptionViewModel { option_id = x.Id.GetValueOrDefault(), option_description = x.Description });
+            var options = _applicationServiceOption.GetAll().Where(x => x.QuestionId == id).ToList();
+
+            //questionViewModel.options = _applicationServiceOption
+            //    .GetAll()
+            //    .Where(x => x.QuestionId.Equals(id))
+            //    .Select(x => new GetOptionViewModel { option_id = x.Id.GetValueOrDefault(), option_description = x.Description });
 
             return questionViewModel;
         }
@@ -81,7 +83,7 @@ namespace DesafioEnquete.Application.Service
         public void SumView(int id)
         {
             var objQuestion = _serviceQuestion.GetById(id);
-            objQuestion.Views = objQuestion.Views++;
+            objQuestion.Views = objQuestion.Views + 1;
             _serviceQuestion.Update(objQuestion);
         }
 
